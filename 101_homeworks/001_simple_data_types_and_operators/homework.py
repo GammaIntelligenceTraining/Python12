@@ -15,7 +15,7 @@
 '''
 
 # years
-current_year = 2022
+current_year = 2023
 year_of_birth = 1988
 
 # code parts
@@ -29,17 +29,3 @@ user_surname = 'Smith'
 # code 2 data
 x = 152
 y = 132
-
-age = current_year - year_of_birth
-
-# code2_part1 = x % y
-# code2_part2 = code2_part1 * 13
-# code2_part3 = code2_part2 ** 0.5
-# code2 = int(code2_part3)
-
-code_2 = int(((x % y) * 13) ** 0.5)
-code = code_1 + '-' + str(code_2) + '-' + str(code_3)
-
-print('Hello ' + user_name + ' ' + user_surname + '. You are ' +
-      str(age) + ' years old. Your secret code is ' + code + '.')
-# Hello Mary Gold. You are 26 years old. Your secret code is 475-12-967.
