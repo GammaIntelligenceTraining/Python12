@@ -14,12 +14,17 @@ while True:
         print('Good bye!')
         quit()
     else:
-        if len(idcode) != 11:
+        try:
+            int(idcode)
+            if len(idcode) != 11:
+                raise UserWarning
+        except ValueError:
+            print('Code you entered is not numeric!')
+        except UserWarning:
             if len(idcode) > 11:
                 print('Code is too long')
             else:
                 print('Code is too short')
-            continue
         else:
             while True:
                 user_menu = input('Please select:\n'
@@ -63,6 +68,25 @@ while True:
                     chk1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1]
                     chk2 = [3, 4, 5, 6, 7, 8, 9, 1, 2, 3]
                     # 38803160272
+                    result = 0
+                    counter = 0
+                    for num in chk1:
+                        result += num * int(idcode[counter])
+                        counter += 1
+                    if result % 11 == int(idcode[-1]):
+                        print(idcode, 'is valid.')
+                    else:
+                        result = 0
+                        counter = 0
+                        for num in chk2:
+                            result += num * int(idcode[counter])
+                            counter += 1
+                        if result % 11 == int(idcode[-1]):
+                            print(idcode, 'is valid. CHK2')
+                        else:
+                            print(idcode, 'is not valid.')
+
+
 
                 elif user_menu == '5':
                     break
@@ -72,4 +96,4 @@ while True:
                 else:
                     print('Choice is out of range!')
                     continue
-print('Good bye!')
+
