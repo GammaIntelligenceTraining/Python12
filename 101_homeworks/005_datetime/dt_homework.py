@@ -50,5 +50,3 @@ def two_weeks_before(timestamp):
     return datetime.datetime.timestamp(date)
 
 print(two_weeks_before(some_day))
-
-
