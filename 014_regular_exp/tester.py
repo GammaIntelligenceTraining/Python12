@@ -1,61 +1,42 @@
 import re
 
-# Sample string
-text_to_search = '''
-abcdefghijklmnopqurtuvwxyz
-ABCDEFGHIJKLMNOPQRSTUVWXYZ
-1234567890
-Ha HaHa HaHaHa
-MetaCharacters (Need to be escaped):
-. ^ $ * + ? { } [ ] \ | ( )
-example.com
-example*com
-321-555-4321
-123.555.1234
-123*555*1234
-800-555-1234
-900-555-1234
-900-555-123
-1231-123-123123123
-Mr. Jones
-Mr Smith
-Ms Davis
-Mrs. Robinson
-Mr. T
-abc
-абвг
+# pattern1 = re.compile(r'#[a-fA-F0-9]{6}\b')
+# sample1 = '#6655ff, #000000, #hmelee, #00998844, 23#323232'
 
-wall mall hall ball tall
-'''
+# pattern2 = re.compile(r'(\d+)[^+]')
+# sample2 = '“2*9-6*5” или (3+5)-9*4) 132231+'
 
-sentence = 'Start a sentence and then bring it to an end'
+# pattern3 = re.compile(r'\b([01][0-9]|2[0-3]):([0-5][0-9])\b')
+# sample3 = 'Найти в тексте 123:123 время. Время имеет формат часы:минуты. И часы, и минуты состоят из двух цифр, пример: 09:00. Напишите регулярное выражение для поиска времени в строке: «Завтрак в 09:00». Учтите, что «37:98» – некорректное время. [00:00 - 23:59]'
 
-emails = '''
-SampleMaiL@example.com
-john.sample@my-work.net
-jack-125-production@colledge.edu
-bob.Samples@example.co.uk.co
-example@example.org
-'''
+# with open('people.txt', 'r', encoding='utf8') as file:
+#     sample4 = file.read()
+#
+#
+# name_pattern = re.compile(r'([A-Z][a-z-]+ [A-Za-z-]+)\n')
+# address_pattern = re.compile(r'\d{3} [0-9A-Za-z\'-]+ St\., [A-Za-z\' -]+ [A-Z]{2} \d{5}')
+#
+# # matches = name_pattern.finditer(sample4)
+# matches = list(address_pattern.finditer(sample4))
+# print(len(matches))
+# # print(len(list(matches)))
+# for match in matches:
+#     print(match)
 
-urls = '''
-https://www.google.com
-http://www.wordpress.org
-https://www.nasa.gov
-https://example.net
-www.example.net
-example.net
-'''
 
-# pattern = re.compile(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+')
-pattern = re.compile(r'(http://|https://)?(www\.)?([\w-]+)([.\w]+)')
+# pattern5 = re.compile(r'[^A-Za-z0-9]')
+# sample5 = 'ASdasdasd913123 12'
+#
+# matches = pattern5.findall(sample5)
+# if matches:
+#     print('There are forbidden letters!')
+# else:
+#     print('There is no forbidden letters!')
 
-matches = pattern.findall(urls)
+
+pattern6 = re.compile(r'[1-8][0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])\d{4}')
+sample6 = '38803160272 99102021234 36713038965'
+matches = pattern6.finditer(sample6)
 
 for match in matches:
     print(match)
-
-pattern = re.compile(r'abc')
-
-matches = pattern.search(text_to_search)
-print(matches)
